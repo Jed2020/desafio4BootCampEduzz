@@ -1,11 +1,10 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import URLShortenerForm from './components/URLShortenerForm';
+
 
 function App() {
   return (
     <div className="App">
-      
+      < URLShortenerForm/>
     </div>
   );
 }
