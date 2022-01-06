@@ -12,7 +12,7 @@ const port = config.get("port");
 app.use(bodyParser.json());
 
 app.listen(4000, () => {
-    console.log(`Application listening at http://localhost:${port}`);
+    console.log(`Servidor rodando na porta http://localhost:${port}`);
     db();
     routes(app);
     
