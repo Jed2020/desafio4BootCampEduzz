@@ -1,13 +1,17 @@
-import URLShortenerForm from './components/URLShortenerForm';
-import Background from './components/Background';
-
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import HomeContainer from "./containers/Home";
+import HandleRedirectContainer from "./containers/HandleRedirect";
 
 function App() {
   return (
-    <div className="App">
-      < URLShortenerForm/>
-      <Background/>
-    </div>
+    <Router>
+        <Route path="/">
+          <HomeContainer />
+        </Route>
+        <Route path="/:shortId">
+          <HandleRedirectContainer />
+        </Route>
+    </Router>
   );
 }
 
