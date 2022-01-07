@@ -14,20 +14,32 @@ export async function createShortUrl(req: Request, res: Response) {
 }
 
 export async function handleRedirect(req: Request, res: Response) {
-    const { shortId } = req.params;
-  
-    const short = await shortUrl.findOne({ shortId }).lean();
-  
-    if (!short) {
-      return res.sendStatus(404);
-    }
-    analytics.create({ shortUrl: short._id });
+  const { shortId } = req.params;
 
-    return res.redirect(short.destination);
+  const short = await shortUrl.findOne({ shortId }).lean();
+
+  if (!short) {
+    return res.sendStatus(404);
   }
-  
-export async function getAnalytics(req: Request, res: Response) {
-    const data = await analytics.find({}).lean();
 
-    return res.send(data);
+  analytics.create({ shortUrl: short._id });
+
+  return res.redirect(short.destination);
+}
+
+export async function getAnalytics(req: Request, res: Response) {
+  const data = await analytics.find({}).lean();
+
+  return res.send(data);
+}
+
+export async function getShortUrl(req: Request, res: Response) {
+  const { shortId } = req.params;
+  const short = await shortUrl.findOne({ shortId }).lean();
+
+  if (!short) {
+    return res.sendStatus(404);
+  }
+
+  return res.json(short);
 }
