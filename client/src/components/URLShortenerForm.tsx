@@ -22,14 +22,15 @@ function URLShortenerForm() {
   }
 
   return (
-    <Box pos="relative" zIndex="2" backgroundColor="white" padding="6">
+    <Box pos="relative" zIndex="2" backgroundColor="white" padding="6" borderRadius="15px">
       <form onSubmit={handleSubmit}>
         <InputGroup>
           <Input
             onChange={(e: any) => setDestination(e.target.value)}
             placeholder="https://example.com"
+            borderColor='gray.300'
           />
-          <Button type="submit">CREATE</Button>
+          <Button backgroundColor="#95BCCC" type="submit">Criar</Button>
         </InputGroup>
       </form>
       {shortUrl && (
